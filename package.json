@@ -6,6 +6,7 @@
     "dev": "next dev",
     "fmt": "prettier --write '**/*.{ts,js,tsx,jsx,css,json,md,prettierrc,html,yml}'",
     "build": "next build",
+    "postbuild": "next-on-netlify",
     "start": "next start"
   },
   "dependencies": {
