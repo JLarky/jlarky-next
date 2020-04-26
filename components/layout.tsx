@@ -173,9 +173,9 @@ export default function Layout({
               <div className="px-8">
                 <h3 className="font-bold text-gray-900">About</h3>
                 <p className="py-4 text-gray-600 text-sm">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Maecenas vel mi ut felis tempus commodo nec id erat.
-                  Suspendisse consectetur dapibus velit ut lacinia.
+                  This website is for entertainment purposes only (if I say so
+                  myself). If you disagree with something please disregard it as
+                  a bad joke. © {new Date().getFullYear()}
                 </p>
               </div>
             </div>
@@ -186,25 +186,25 @@ export default function Layout({
                   <li>
                     <a
                       className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
-                      href="#"
+                      href="https://t.me/JLarky"
                     >
-                      Add social link
+                      Telegram
                     </a>
                   </li>
                   <li>
                     <a
                       className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
-                      href="#"
+                      href="https://twitter.com/JLarky"
                     >
-                      Add social link
+                      Twitter
                     </a>
                   </li>
                   <li>
                     <a
                       className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
-                      href="#"
+                      href="https://github.com/JLarky"
                     >
-                      Add social link
+                      GitHub
                     </a>
                   </li>
                 </ul>
