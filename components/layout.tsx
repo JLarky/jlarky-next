@@ -1,6 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { HeaderNavLink } from './HeaderNavLink'
+import { useRouter } from 'next/router'
 
 export const siteTitle = 'Yaroslav Lapin'
 
@@ -11,6 +13,8 @@ export default function Layout({
   children: React.ReactNode
   home?: boolean
 }) {
+  const router = useRouter()
+
   React.useEffect(() => {
     /* Progress bar */
     //Source: https://alligator.io/js/progress-bar-javascript-css-variables/
@@ -111,28 +115,13 @@ export default function Layout({
           >
             <ul className="list-reset lg:flex justify-end flex-1 items-center">
               <li className="mr-3">
-                <a
-                  className="inline-block py-2 px-4 text-gray-900 font-bold no-underline"
-                  href="#"
-                >
-                  Active
-                </a>
+                <HeaderNavLink href="/">Home</HeaderNavLink>
               </li>
               <li className="mr-3">
-                <a
-                  className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4"
-                  href="#"
-                >
-                  link
-                </a>
+                <HeaderNavLink href="/posts">Blog</HeaderNavLink>
               </li>
               <li className="mr-3">
-                <a
-                  className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4"
-                  href="#"
-                >
-                  link
-                </a>
+                <HeaderNavLink href="/contacts">Contacts</HeaderNavLink>
               </li>
             </ul>
           </div>
@@ -148,10 +137,10 @@ export default function Layout({
           <div className="font-sans">
             <span className="text-base md:text-sm text-teal-500 font-bold">
               <span>
-                {!home && (
+                {router.pathname === '/posts/[id]' && (
                   <>
                     &lt;{' '}
-                    <Link href="/">
+                    <Link href="/posts">
                       <a className="text-base md:text-sm text-teal-500 font-bold no-underline hover:underline">
                         BACK TO BLOG
                       </a>

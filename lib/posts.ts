@@ -67,3 +67,6 @@ export async function getPostData(id: string) {
     ...(matterResult.data as { date: string; title: string })
   }
 }
+
+export type PostData = ReturnType<typeof getPostData>
+export type SortedPostsData = ReturnType<typeof getSortedPostsData>
