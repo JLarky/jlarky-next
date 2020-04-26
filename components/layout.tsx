@@ -1,14 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import styles from './layout.module.css'
 import Link from 'next/link'
 
-const name = (
-  <span>
-    Yaroslav <span className="text-gray-600">JLarky</span> Lapin
-  </span>
-)
-const nameAlt = 'Yaroslav JLarky Lapin'
 export const siteTitle = 'Yaroslav Lapin'
 
 export default function Layout({
@@ -220,32 +213,6 @@ export default function Layout({
           </div>
         </div>
       </footer>
-    </div>
-  )
-
-  return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <img src="/images/profile.jpg" className="" alt={nameAlt} />
-            <h1 className="">{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <img src="/images/profile.jpg" className="" alt={nameAlt} />
-              </a>
-            </Link>
-            <h2 className="">
-              <Link href="/">
-                <a className="">{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
     </div>
   )
 }
