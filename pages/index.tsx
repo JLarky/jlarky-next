@@ -19,15 +19,15 @@ export default function Home({
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className="">
-        <p>[Your Self Introduction]</p>
+      <section
+        className="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal"
+        style={{ fontFamily: 'Georgia,serif' }}
+      >
         <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+          My name is Yaroslav Lapin, I do things on the internet. There’re few
+          outdated pages about me and now I'm adding one more!
         </p>
-      </section>
-      <section className="">
-        <h2 className="">Blog</h2>
+        <h2 className="py-4 text-2xl font-bold">Blog</h2>
         <ul className="">
           {allPostsData.map(({ id, date, title }) => (
             <li className="" key={id}>
@@ -42,6 +42,7 @@ export default function Home({
           ))}
         </ul>
       </section>
+      <div className="py-6"> </div>
     </Layout>
   )
 }

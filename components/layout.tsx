@@ -86,12 +86,16 @@ export default function Layout({
         />
         <div className="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
           <div className="pl-4">
-            <a
-              className="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl"
-              href="#"
-            >
-              Minimal Blog
-            </a>
+            <Link href="/">
+              <a
+                className="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl"
+                href="/"
+              >
+                {home
+                  ? 'The Official Website of Yaroslav Lapin'
+                  : "Yaroslav Lapin's Blog"}
+              </a>
+            </Link>
           </div>
           <div className="block lg:hidden pr-4">
             <button
@@ -165,91 +169,8 @@ export default function Layout({
               </span>
             </span>
           </div>
-          <main>{children}</main>
-
-          {/*/ Post Content*/}
         </div>
-        {/*Tags */}
-        <div className="text-base md:text-sm text-gray-500 px-4 py-6">
-          Tags:{' '}
-          <a
-            href="#"
-            className="text-base md:text-sm text-teal-500 no-underline hover:underline"
-          >
-            Link
-          </a>{' '}
-          .{' '}
-          <a
-            href="#"
-            className="text-base md:text-sm text-teal-500 no-underline hover:underline"
-          >
-            Link
-          </a>
-        </div>
-        {/*Divider*/}
-        <hr className="border-b-2 border-gray-400 mb-8 mx-4" />
-        {/*Author*/}
-        <div className="flex w-full items-center font-sans px-4 py-12">
-          <img
-            className="w-10 h-10 rounded-full mr-4"
-            src="http://i.pravatar.cc/300"
-            alt="Avatar of Author"
-          />
-          <div className="flex-1 px-2">
-            <p className="text-base font-bold text-base md:text-xl leading-none mb-2">
-              Jo Bloggerson
-            </p>
-            <p className="text-gray-600 text-xs md:text-base">
-              Minimal Blog Tailwind CSS template by{' '}
-              <a
-                className="text-teal-500 no-underline hover:underline"
-                href="https://www.tailwindtoolbox.com"
-              >
-                TailwindToolbox.com
-              </a>
-            </p>
-          </div>
-          <div className="justify-end">
-            <button className="bg-transparent border border-gray-500 hover:border-teal-500 text-xs text-gray-500 hover:text-teal-500 font-bold py-2 px-4 rounded-full">
-              Read More
-            </button>
-          </div>
-        </div>
-        {/*/Author*/}
-        {/*Divider*/}
-        <hr className="border-b-2 border-gray-400 mb-8 mx-4" />
-        {/*Next & Prev Links*/}
-        <div className="font-sans flex justify-between content-center px-4 pb-12">
-          <div className="text-left">
-            <span className="text-xs md:text-sm font-normal text-gray-600">
-              &lt; Previous Post
-            </span>
-            <br />
-            <p>
-              <a
-                href="#"
-                className="break-normal text-base md:text-sm text-teal-500 font-bold no-underline hover:underline"
-              >
-                Blog title
-              </a>
-            </p>
-          </div>
-          <div className="text-right">
-            <span className="text-xs md:text-sm font-normal text-gray-600">
-              Next Post &gt;
-            </span>
-            <br />
-            <p>
-              <a
-                href="#"
-                className="break-normal text-base md:text-sm text-teal-500 font-bold no-underline hover:underline"
-              >
-                Blog title
-              </a>
-            </p>
-          </div>
-        </div>
-        {/*/Next & Prev Links*/}
+        <main>{children}</main>
       </div>
       {/*/container*/}
       <footer className="bg-white border-t border-gray-400 shadow">
