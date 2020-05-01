@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { HeaderNavLink } from './HeaderNavLink'
 import { useRouter } from 'next/router'
-
+import { GA_TRACKING_ID } from '../lib/gtag'
 export const siteTitle = 'Yaroslav Lapin'
 
 export default function Layout({
@@ -71,6 +71,26 @@ export default function Layout({
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+
+
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function (window as any).gtag{dataLayer.push(arguments);}
+            (window as any).gtag('js', new Date());
+            (window as any).gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
+          />
+
       </Head>
       <nav id="header" className="fixed w-full z-10 top-0">
         <div
