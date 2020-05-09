@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.2",
+    "@types/gtag.js": "^0.0.3",
     "autoprefixer": "^9.7.6",
     "date-fns": "^2.11.1",
     "gray-matter": "^4.0.2",
