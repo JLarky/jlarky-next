@@ -179,6 +179,8 @@ export default function Layout({
                       }}
                       className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
                       href="https://t.me/JLarky"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Telegram
                     </a>
@@ -190,6 +192,8 @@ export default function Layout({
                       }}
                       className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
                       href="https://twitter.com/JLarky"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Twitter
                     </a>
@@ -201,6 +205,8 @@ export default function Layout({
                       }}
                       className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
                       href="https://github.com/JLarky"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       GitHub
                     </a>
