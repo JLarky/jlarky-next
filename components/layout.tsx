@@ -174,6 +174,9 @@ export default function Layout({
                 <ul className="list-reset items-center text-sm pt-3">
                   <li>
                     <a
+                      onClick={() => {
+                        gtag('event', 'view_item', { content_id: 'telegram' })
+                      }}
                       className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
                       href="https://t.me/JLarky"
                     >
@@ -182,6 +185,9 @@ export default function Layout({
                   </li>
                   <li>
                     <a
+                      onClick={() => {
+                        gtag('event', 'view_item', { content_id: 'twitter' })
+                      }}
                       className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
                       href="https://twitter.com/JLarky"
                     >
@@ -190,6 +196,9 @@ export default function Layout({
                   </li>
                   <li>
                     <a
+                      onClick={() => {
+                        gtag('event', 'view_item', { content_id: 'github' })
+                      }}
                       className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
                       href="https://github.com/JLarky"
                     >
