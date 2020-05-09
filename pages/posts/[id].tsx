@@ -1,3 +1,4 @@
+import React from 'react'
 import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
@@ -8,8 +9,10 @@ import Link from 'next/link'
 import styles from './[id].module.css'
 
 export default function Post({
-  postData
+  postData,
+  params
 }: {
+  params: { id: string }
   postData: {
     title: string
     date: string
@@ -17,6 +20,28 @@ export default function Post({
   }
 }) {
   const tags = []
+  const [overrideHtml, setHtml] = React.useState('')
+  const html = overrideHtml || postData.contentHtml
+
+  if (process.env.NODE_ENV === 'development') {
+    React.useEffect(() => {
+      const loop = async () => {
+        const res = await fetch(`/api/getPostData?postId=${params.id}`)
+        if (res.status == 200) {
+          const { contentHtml: newHtml } = await res.json()
+          if (html !== newHtml) {
+            setHtml(newHtml)
+          }
+        }
+        timer = setTimeout(loop, 1000)
+      }
+      let timer = setTimeout(loop, 1000)
+      return () => {
+        clearTimeout(timer)
+      }
+    }, [html])
+  }
+
   return (
     <Layout>
       <Head>
@@ -34,7 +59,7 @@ export default function Post({
         </p>
         <div
           className={styles['blog-content']}
-          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+          dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>
       <div className="text-base md:text-sm text-gray-500 px-4 py-6">
@@ -130,7 +155,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postData = await getPostData(params.id as string)
   return {
     props: {
-      postData
+      postData,
+      params
     }
   }
 }
