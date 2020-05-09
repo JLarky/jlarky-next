@@ -29,7 +29,6 @@ export default class extends Document {
             }}
           />
         </Head>
-        }
         <body>
           <Main />
           <NextScript />
