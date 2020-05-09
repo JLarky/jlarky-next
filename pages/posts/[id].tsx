@@ -5,6 +5,8 @@ import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Link from 'next/link'
 
+import styles from './[id].module.css'
+
 export default function Post({
   postData
 }: {
@@ -30,7 +32,10 @@ export default function Post({
         <p className="font-sans text-sm md:text-base font-normal text-gray-600">
           Published <Date dateString={postData.date} />
         </p>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <div
+          className={styles['blog-content']}
+          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+        />
       </article>
       <div className="text-base md:text-sm text-gray-500 px-4 py-6">
         {!!tags.length && (
