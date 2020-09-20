@@ -1,6 +1,7 @@
 ---
 title: "Подробное введение в PASETO (translated to Russian)"
 date: "2020-05-09"
+og:image: "https://developer.okta.com/assets-jekyll/blog/a-thorough-introduction-to-paseto/an-introduction-to-paseto-41ea2679a51c2c39a410020c2159d4f915165897f3ce575f9a659d0ec77fd324.png"
 ---
 
 <blockquote class="mt-6 relative p-4 text-xl italic border-l-4 bg-gray-200 text-gray-600 border-gray-500 quote" title="This article is a translation of 'A Thorough Introduction to PASETO' by Randall Degges">

@@ -6,6 +6,12 @@ import html from 'remark-html'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
+type MatterData = {
+  date: string
+  title: string
+  'og:image'?: string
+}
+
 export function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory)
@@ -23,7 +29,7 @@ export function getSortedPostsData() {
     // Combine the data with the id
     return {
       id,
-      ...(matterResult.data as { date: string; title: string })
+      ...(matterResult.data as MatterData)
     }
   })
   // Sort posts by date
@@ -64,9 +70,15 @@ export async function getPostData(id: string) {
   return {
     id,
     contentHtml,
-    ...(matterResult.data as { date: string; title: string })
+    ...(matterResult.data as MatterData)
   }
 }
 
-export type PostData = ReturnType<typeof getPostData>
+type Await<T> = T extends {
+  then(onfulfilled?: (value: infer U) => unknown): unknown
+}
+  ? U
+  : T
+
+export type PostData = Await<ReturnType<typeof getPostData>>
 export type SortedPostsData = ReturnType<typeof getSortedPostsData>

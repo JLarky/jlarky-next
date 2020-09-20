@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../../components/layout'
-import { getAllPostIds, getPostData } from '../../lib/posts'
+import { getAllPostIds, getPostData, PostData } from '../../lib/posts'
 import Head from 'next/head'
 import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -11,11 +11,7 @@ export default function Post({
   params
 }: {
   params: { id: string }
-  postData: {
-    title: string
-    date: string
-    contentHtml: string
-  }
+  postData: PostData
 }) {
   const tags = []
   const [overrideHtml, setHtml] = React.useState('')
@@ -39,11 +35,18 @@ export default function Post({
       }
     }, [html])
   }
-
   return (
     <Layout>
       <Head>
         <title>{postData.title}</title>
+        <meta key="og:title" name="og:title" content={postData.title} />
+        {!!postData['og:image'] && (
+          <meta
+            key="og:image"
+            property="og:image"
+            content={postData['og:image']}
+          />
+        )}
       </Head>
       <article
         className="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal"
