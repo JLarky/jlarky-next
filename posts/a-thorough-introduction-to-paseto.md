@@ -1,9 +1,9 @@
 ---
-title: "Подробное введение в PASETO"
+title: "Подробное введение в PASETO (translated to Russian)"
 date: "2020-05-09"
 ---
 
-<blockquote class="mt-6 relative p-4 text-xl italic border-l-4 bg-gray-200 text-gray-600 border-gray-500 quote">
+<blockquote class="mt-6 relative p-4 text-xl italic border-l-4 bg-gray-200 text-gray-600 border-gray-500 quote" title="This article is a translation of 'A Thorough Introduction to PASETO' by Randall Degges">
     Данная статья является переводом 
     <a
         href="https://developer.okta.com/blog/2019/10/17/a-thorough-introduction-to-paseto"
@@ -591,7 +591,7 @@ PASETO применяет подход к разработке токенов б
 
 В общем, я большой поклонник технологии PASETO и вижу большой потенциал в ее внедрении и использовании. В настоящее время в Okta мы работаем над некоторыми проектами, ориентированными на PASETO, которые мы надеемся выпустить в ближайшие месяцы, чтобы сделать технологию PASETO более распространенной. Хотя мы все еще используем в нашем продукте JSON Web Token, мы также работаем над открытыми стандартами, чтобы сделать использование JSON Web Token более безопасным. Наша надежда в том, что решив проблему со всех сторон, мы сможем повысить безопасность токенов в сети для всех.
 
-<blockquote class="mt-6 relative p-4 text-xl italic border-l-4 bg-gray-200 text-gray-600 border-gray-500 quote">
+<blockquote class="mt-6 relative p-4 text-xl italic border-l-4 bg-gray-200 text-gray-600 border-gray-500 quote" title="This article is a translation of 'A Thorough Introduction to PASETO' by Randall Degges">
     Данная статья является переводом 
     <a
         href="https://developer.okta.com/blog/2019/10/17/a-thorough-introduction-to-paseto"
