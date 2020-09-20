@@ -15,7 +15,7 @@ export const HeaderNavLink: React.FC<{ href: string }> = ({
           (active
             ? 'text-gray-900 font-bold hover:text-black'
             : 'text-gray-600 hover:text-gray-900') +
-          ' inline-block py-2 px-4 no-underline'
+          ' inline-block py-2 px-4 no-underline hover:no-underline'
         }
       >
         {children}

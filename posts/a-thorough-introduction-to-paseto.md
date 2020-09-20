@@ -9,7 +9,7 @@ date: "2020-05-09"
         href="https://developer.okta.com/blog/2019/10/17/a-thorough-introduction-to-paseto"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-gray-700 no-underline hover:text-gray-900 hover:text-underline"
+        class="text-teal-500 no-underline hover:text-teal-400 hover:underline"
     >
         A Thorough Introduction to PASETO
     </a>
@@ -18,7 +18,7 @@ date: "2020-05-09"
         href="https://developer.okta.com/blog/authors/randall-degges/"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-gray-700 no-underline hover:text-gray-900 hover:text-underline"
+        class="text-gray-700 no-underline hover:text-gray-900 hover:underline"
     >
         Randall Degges
     </a>
@@ -122,10 +122,10 @@ PASETO можно разделить на 3 (_иногда 4_) сегмента,
 
 Теперь о том, как создается публичный PASETO:
 
-- [libsodium](https://libsodium.gitbook.io/doc/) (_крайне рекомендуемый инструментарий криптографии с простым API_) используется для создания пары открытый/закрытый ключ
-- Заголовок PASETO (`v2.public`) объединяется с содержимым полезной нагрузки и футером в строку предварительной аутентификации
-- Цифровая подпись этой строки создаётся закрытым ключом используя Ed25519, быстрой и безопасной системы подписи открытым ключом
-- Все это упаковано вместе в PASETO в строку формата: `v2.public.<signed string>.footer`
+1. [libsodium](https://libsodium.gitbook.io/doc/) (_крайне рекомендуемый инструментарий криптографии с простым API_) используется для создания пары открытый/закрытый ключ
+1. Заголовок PASETO (`v2.public`) объединяется с содержимым полезной нагрузки и футером в строку предварительной аутентификации
+1. Цифровая подпись этой строки создаётся закрытым ключом используя Ed25519, быстрой и безопасной системы подписи открытым ключом
+1. Все это упаковано вместе в PASETO в строку формата: `v2.public.<signed string>.footer`
 
 Как только вы получили строку токена, вы можете безопасно делиться ею с третьими лицами, не беспокоясь о том, смогут ли злоумышленники ее изменить.
 
@@ -231,14 +231,14 @@ dl. сервер знает secret_key:
 
 Аутентификация в данном случае может работать с использованием публичных PASETO в следующем порядке:
 
-- Пользователь заходит на сайт и нажимает кнопку входа
-- Пользователь перенаправляется на сервер авторизации для входа в систему (`https://id.example.com/login`)
-- Пользователь вводит свои учетные данные в веб-форму для аутентификации
-- Сервер авторизации проверяет учетные данные пользователя и создает публичный PASETO, используя закрытый ключ, к которому имеет доступ только авторизационный сервер. Этот PASETO будет включать в себя требование, которое предоставляет аутентификатор пользователя.
-- Затем сервер авторизации перенаправляет пользователя на вебсайт с публичным PASETO в качестве параметра URL (`https://example.com/dashboard?token=v2.public.xxx`)
-- Вебсайт получает запрос пользователя на переход на страницу панели инструментов и анализирует PASETO из параметра URL-адреса токена
-- Вебсайт проверяет PASETO, а затем создает для пользователя долгоживущую сессию с использованием безопасных файлов cookie и стандартных потоков управления сессиями на стороне сервера
-- Теперь пользователь аутенифицирован на вебсайте с использованием PASETO, чтобы сделать возможным дальнейший процесс аутентификации
+1. Пользователь заходит на сайт и нажимает кнопку входа
+1. Пользователь перенаправляется на сервер авторизации для входа в систему (`https://id.example.com/login`)
+1. Пользователь вводит свои учетные данные в веб-форму для аутентификации
+1. Сервер авторизации проверяет учетные данные пользователя и создает публичный PASETO, используя закрытый ключ, к которому имеет доступ только авторизационный сервер. Этот PASETO будет включать в себя требование, которое предоставляет аутентификатор пользователя.
+1. Затем сервер авторизации перенаправляет пользователя на вебсайт с публичным PASETO в качестве параметра URL (`https://example.com/dashboard?token=v2.public.xxx`)
+1. Вебсайт получает запрос пользователя на переход на страницу панели инструментов и анализирует PASETO из параметра URL-адреса токена
+1. Вебсайт проверяет PASETO, а затем создает для пользователя долгоживущую сессию с использованием безопасных файлов cookie и стандартных потоков управления сессиями на стороне сервера
+1. Теперь пользователь аутенифицирован на вебсайте с использованием PASETO, чтобы сделать возможным дальнейший процесс аутентификации
 
 ![How to use public PASETOs](https://d33wubrfki0l68.cloudfront.net/510ca75f511217f250096e4b96e4246931078344/13f41/assets-jekyll/blog/a-thorough-introduction-to-paseto/how-to-use-public-pasetos-47e795cc5fdf69e6edeafd0731a817e04526651f07315649b3efb147fec23299.gif)
 
@@ -268,9 +268,9 @@ dl. сервер знает secret_key:
 
 Когда сессия пользователя истекает, пользователь должен пройти повторную аутентификацию, и в этом случае вебсайт перенаправит пользователя обратно на сервер авторизации для повторной аутентификации.
 
-## Важные случаи пользования, которые PASETO не решают
+## Важные случаи использования, которые PASETO не решают
 
-В то время как PASETO полезны в ряде различных ситуаций, я хотел бы указать один явный случай пользования, для решения которого PASETO _не_ предназначен.
+В то время как PASETO полезны в ряде различных ситуаций, я хотел бы указать один явный случай использования, для решения которого PASETO _не_ предназначен.
 
 **PASETO _не_ предназначены для многократного использования.**
 
@@ -597,22 +597,22 @@ PASETO применяет подход к разработке токенов б
         href="https://developer.okta.com/blog/2019/10/17/a-thorough-introduction-to-paseto"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-gray-700 no-underline hover:text-gray-900 hover:text-underline"
+        class="text-gray-700 no-underline hover:text-gray-900 hover:underline"
     >
         A Thorough Introduction to PASETO</a>, если вы хотите оставить комментарий автору оригинальной статьи, то напишите в <a
         href="https://twitter.com/oktadev"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-gray-700 no-underline hover:text-gray-900 hover:text-underline"
+        class="text-gray-700 no-underline hover:text-gray-900 hover:underline"
     >@oktadev</a> или <a
         href="https://twitter.com/rdegges"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-gray-700 no-underline hover:text-gray-900 hover:text-underline"
+        class="text-gray-700 no-underline hover:text-gray-900 hover:underline"
     >@rdegges</a>. Если у вас есть предложения по переводу, лучшее место для этого напрямую в <a
         href="https://github.com/JLarky/jlarky/blob/master/posts/a-thorough-introduction-to-paseto.md"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-gray-700 no-underline hover:text-gray-900 hover:text-underline"
+        class="text-gray-700 no-underline hover:text-gray-900 hover:underline"
     >гитхабе</a>.
 </blockquote>

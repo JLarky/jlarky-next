@@ -6,8 +6,6 @@ import Date from '../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Link from 'next/link'
 
-import styles from './[id].module.css'
-
 export default function Post({
   postData,
   params
@@ -58,7 +56,7 @@ export default function Post({
           Published <Date dateString={postData.date} />
         </p>
         <div
-          className={`${styles['blog-content']} blog-content`}
+          className="blog-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>

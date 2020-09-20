@@ -1,5 +1,6 @@
 module.exports = {
   experimental: {
+    defaultLineHeights: true,
     uniformColorPalette: true,
     applyComplexClasses: true
   },
