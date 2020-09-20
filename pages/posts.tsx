@@ -11,7 +11,7 @@ export const Blog: React.FC<Props> = ({ allPostsData }) => {
   return (
     <Layout home={false}>
       <Head>
-        <title>{siteTitle} > Blog</title>
+        <title>{siteTitle} &gt; Blog</title>
       </Head>
       <BlogPosts allPostsData={allPostsData} />
       <div className="py-6"> </div>
