@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import { getSortedPostsData } from '../lib/posts'
 import { GetStaticProps } from 'next'
+import Link from 'next/link'
 import { BlogPosts } from './posts'
 
 export default function Home({
@@ -23,8 +24,12 @@ export default function Home({
         style={{ fontFamily: 'Georgia,serif' }}
       >
         <p>
-          My name is Yaroslav Lapin, I do things on the internet. There’re few
-          outdated pages about me and now I'm adding one more!
+          My name is{' '}
+          <Link href="/contacts">
+            <a className="text-gray-900">Yaroslav Lapin</a>
+          </Link>
+          , I do things on the internet. There’re few outdated pages about me
+          and now I'm adding one more!
         </p>
       </section>
       <BlogPosts allPostsData={allPostsData} />
