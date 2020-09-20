@@ -58,7 +58,7 @@ export default function Post({
           Published <Date dateString={postData.date} />
         </p>
         <div
-          className={styles['blog-content']}
+          className={`${styles['blog-content']} blog-content`}
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>

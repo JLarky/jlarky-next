@@ -7,3 +7,7 @@
 @tailwind utilities;
 
 /* Your own custom utilities */
+
+.blog-content a {
+  @apply text-gray-600 hover:text-gray-900 hover:underline;
+}

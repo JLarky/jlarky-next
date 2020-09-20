@@ -1,4 +1,8 @@
 module.exports = {
+  experimental: {
+    uniformColorPalette: true,
+    applyComplexClasses: true
+  },
   future: {
     purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true
