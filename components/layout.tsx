@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -14,6 +15,9 @@ export default function Layout({
   home?: boolean
 }) {
   const router = useRouter()
+  const [showMenu, setShowMenu] = React.useState(false)
+  const [scrolledDown, setScrolledDown] = React.useState(false)
+  const progress = React.useRef<null | HTMLDivElement>(null)
 
   React.useEffect(() => {
     /* Progress bar */
@@ -22,44 +26,20 @@ export default function Layout({
       b = document.body,
       st = 'scrollTop',
       sh = 'scrollHeight',
-      progress = document.querySelector<HTMLDivElement>('#progress'),
       scroll
     var scrollPosition = window.scrollY
-    var header = document.getElementById('header')
-    var navContent = document.getElementById('nav-content')
 
-    document.addEventListener('scroll', function () {
+    const listener = function () {
       /*Refresh scroll % width*/
       scroll = ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100
-      progress.style.setProperty('--scroll', scroll + '%')
+      progress.current?.style.setProperty('--scroll', scroll + '%')
 
-      /*Apply classes for slide in bar*/
       scrollPosition = window.scrollY
 
-      if (scrollPosition > 10) {
-        header.classList.remove('bg-gray-100')
-        header.classList.add('bg-white')
-        header.classList.add('shadow')
-        navContent.classList.remove('bg-gray-100')
-        navContent.classList.add('bg-white')
-      } else {
-        header.classList.remove('bg-white')
-        header.classList.remove('shadow')
-        navContent.classList.remove('bg-white')
-        navContent.classList.add('bg-gray-100')
-      }
-    })
-
-    //Javascript to toggle the menu
-    document.getElementById('nav-toggle').onclick = function () {
-      if (navContent.classList.toggle('hidden')) {
-        header.classList.remove('bg-gray-100')
-        header.classList.remove('shadow')
-      } else {
-        header.classList.add('bg-gray-100')
-        header.classList.add('shadow')
-      }
+      setScrolledDown(scrollPosition > 10)
     }
+    document.addEventListener('scroll', listener)
+    return () => document.removeEventListener('scroll', listener)
   }, [])
 
   return (
@@ -79,9 +59,15 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <nav id="header" className="fixed w-full z-10 top-0">
+      <nav
+        className={classNames(
+          'fixed w-full z-10 top-0',
+          scrolledDown ? 'bg-white' : 'bg-gray-100',
+          (scrolledDown || showMenu) && 'shadow'
+        )}
+      >
         <div
-          id="progress"
+          ref={progress}
           className="h-1 z-20 top-0"
           style={{
             background:
@@ -103,7 +89,7 @@ export default function Layout({
           </div>
           <div className="block lg:hidden pr-4">
             <button
-              id="nav-toggle"
+              onClick={() => setShowMenu(x => !x)}
               className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-500 hover:text-gray-900 hover:border-teal-500 appearance-none focus:outline-none"
             >
               <svg
@@ -117,8 +103,10 @@ export default function Layout({
             </button>
           </div>
           <div
-            className="w-full flex-grow lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 lg:bg-transparent z-20"
-            id="nav-content"
+            className={classNames(
+              'w-full flex-grow lg:items-center lg:w-auto mt-2 lg:mt-0 z-20',
+              !showMenu && 'hidden lg:block'
+            )}
           >
             <ul className="block list-reset lg:flex justify-end flex-1 items-center">
               <li className="mr-3">
