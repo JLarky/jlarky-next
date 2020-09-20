@@ -37,6 +37,7 @@ export default function Layout({
       scrollPosition = window.scrollY
 
       if (scrollPosition > 10) {
+        header.classList.remove('bg-gray-100')
         header.classList.add('bg-white')
         header.classList.add('shadow')
         navContent.classList.remove('bg-gray-100')
@@ -51,7 +52,13 @@ export default function Layout({
 
     //Javascript to toggle the menu
     document.getElementById('nav-toggle').onclick = function () {
-      document.getElementById('nav-content').classList.toggle('hidden')
+      if (navContent.classList.toggle('hidden')) {
+        header.classList.remove('bg-gray-100')
+        header.classList.remove('shadow')
+      } else {
+        header.classList.add('bg-gray-100')
+        header.classList.add('shadow')
+      }
     }
   }, [])
 
@@ -81,11 +88,11 @@ export default function Layout({
               'linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0)'
           }}
         />
-        <div className="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
+        <div className="w-full lg:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
           <div className="pl-4">
             <Link href="/">
               <a
-                className="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl"
+                className="text-gray-900 hover:no-underline font-extrabold text-xl"
                 href="/"
               >
                 {home
@@ -97,7 +104,7 @@ export default function Layout({
           <div className="block lg:hidden pr-4">
             <button
               id="nav-toggle"
-              className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-900 hover:border-teal-500 appearance-none focus:outline-none"
+              className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-500 hover:text-gray-900 hover:border-teal-500 appearance-none focus:outline-none"
             >
               <svg
                 className="fill-current h-3 w-3"
@@ -110,10 +117,10 @@ export default function Layout({
             </button>
           </div>
           <div
-            className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20"
+            className="w-full flex-grow lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 lg:bg-transparent z-20"
             id="nav-content"
           >
-            <ul className="list-reset lg:flex justify-end flex-1 items-center">
+            <ul className="block list-reset lg:flex justify-end flex-1 items-center">
               <li className="mr-3">
                 <HeaderNavLink href="/">Home</HeaderNavLink>
               </li>
@@ -141,7 +148,7 @@ export default function Layout({
                   <>
                     &lt;{' '}
                     <Link href="/posts">
-                      <a className="text-base md:text-sm text-teal-500 font-bold no-underline hover:underline">
+                      <a className="text-base md:text-sm text-teal-500 font-bold hover:underline">
                         BACK TO BLOG
                       </a>
                     </Link>
@@ -177,7 +184,7 @@ export default function Layout({
                       onClick={() => {
                         gtag('event', 'view_item', { content_id: 'telegram' })
                       }}
-                      className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
+                      className="inline-block text-gray-500 hover:text-gray-900 hover:underline py-1"
                       href="https://t.me/JLarky"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -190,7 +197,7 @@ export default function Layout({
                       onClick={() => {
                         gtag('event', 'view_item', { content_id: 'twitter' })
                       }}
-                      className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
+                      className="inline-block text-gray-500 hover:text-gray-900 hover:underline py-1"
                       href="https://twitter.com/JLarky"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -203,7 +210,7 @@ export default function Layout({
                       onClick={() => {
                         gtag('event', 'view_item', { content_id: 'github' })
                       }}
-                      className="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
+                      className="inline-block text-gray-500 hover:text-gray-900 hover:underline py-1"
                       href="https://github.com/JLarky"
                       target="_blank"
                       rel="noopener noreferrer"
