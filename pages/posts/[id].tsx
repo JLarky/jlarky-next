@@ -81,7 +81,7 @@ export default function Post({
         )}
       </div>
       {/*Divider*/}
-      <hr className="border-b-2 border-gray-400 mx-4" />
+      <hr className="mb-1 mx-4 border-gray-400 border-t-2" />
       <div className="flex w-full items-center font-sans px-4 py-12">
         <img
           className="w-10 h-10 rounded-full mr-4"
@@ -104,7 +104,7 @@ export default function Post({
           </Link>
         </div>
       </div>
-      <hr className="border-b-2 border-gray-400 mb-8 mx-4" />
+      <hr className="mb-8 mx-4 border-gray-400 border-t-2" />
       {false && (
         <div className="font-sans flex justify-between content-center px-4 pb-12">
           <div className="text-left">

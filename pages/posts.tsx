@@ -30,7 +30,7 @@ export const BlogPosts: React.FC<Props> = ({ allPostsData }) => {
         {allPostsData.map(({ id, date, title }) => (
           <li className="" key={id}>
             <Link href="/posts/[id]" as={`/posts/${id}`}>
-              <a>{title}</a>
+              <a className="underline">{title}</a>
             </Link>
             <br />
             <small className="">
