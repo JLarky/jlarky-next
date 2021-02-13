@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: jlarky.now.sh
+Token: 7203e74bf5469393a2492abb9baee198b84548fa95583b443a9be25cb718cb79
