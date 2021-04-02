@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next",
     "fmt": "prettier --write '**/*.{ts,js,tsx,jsx,css,json,md,prettierrc,html,yml}'",
+    "fmt:check": "prettier --check '**/*.{ts,js,tsx,jsx,css,json,md,prettierrc,html,yml}'",
     "build": "next build",
     "start": "next start"
   },

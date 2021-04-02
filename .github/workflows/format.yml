@@ -1,0 +1,15 @@
+name: test prettier format
+on: [push]
+jobs:
+  checks-prettier-format:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: yarn install
+      - run: echo '::error file=package.json::Missing semicolon2'
+      - run: echo '::error Missing semicolon3'
+      - run: echo '::error file=lib/files.ts,line=1::Missing semicolon'
+      - run: yarn fmt:check || (echo '::error ::Please run `mix format` to fix this.'; exit 1)
+
